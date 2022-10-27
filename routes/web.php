@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Controlador;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,5 @@ Route::get('/', function () {
 Route::get('/Formulario', function () {
     return view('Formulario');
 });
+
+route::post('Formulario_libro', [Controlador::class, 'validador_campos']);
