@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <title>Formulario</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
 
 <body>
     <!--Barra de navegacion-->
@@ -35,14 +37,20 @@
     </nav>
 
 
-    @if (session()->has('mensaje'))
+   
 
-{{session('mensaje')}}
+@if (session('mensaje'))
+    <script>
+        Swal.fire({
+            title: 'Registro exitoso',
+            text: 'El libro {{session('mensaje')['titulos']}} se ha registrado correctamente',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        })
+    </script>
+
+
 @endif
-
-
-
-
 
 
 
@@ -104,7 +112,7 @@ of Simple CSS Waves-->
                                         <div class="col mb-3">
                                             <h6>Ingresa del titulo del libro</h6>
                                             <input class="form-control" type="text" placeholder="Titulo del libro"
-                                                name="Titulo" aria-label="default input example">
+                                                name="Titulo" value="{{old('Titulo')}}" aria-label="default input example">
                                             @if ($errors->has('Titulo'))
                                             <div class="alert alert-warning" role="alert">
                                                 <strong>{{ $errors->first('Titulo') }}</strong>
@@ -117,7 +125,7 @@ of Simple CSS Waves-->
                                         <div class="col mb-3">
                                             <h6>Ingresa el autor</h6>
                                             <input class="form-control" type="text" placeholder="Nombre del autor"
-                                                name="Autor" aria-label="default input example">
+                                                name="Autor" value="{{old('Autor')}}" aria-label="default input example">
                                             @if ($errors->has('Autor'))
                                             <div class="alert alert-warning" role="alert">
                                                 <strong>{{ $errors->first('Autor') }}</strong>
@@ -131,7 +139,7 @@ of Simple CSS Waves-->
                                         <div class="col mb-3">
                                             <h6>Ingresa el numero de paginas</h6>
                                             <input class="form-control" type="text" placeholder="Numero de Paginas"
-                                                name="Paginas" aria-label="default input example">
+                                                name="Paginas"value="{{old('Paginas')}}" aria-label="default input example">
                                             @if ($errors->has('Paginas'))
                                             <div class="alert alert-warning" role="alert">
                                                 <strong>{{ $errors->first('Paginas') }}</strong>
@@ -145,7 +153,7 @@ of Simple CSS Waves-->
                                         <div class="col mb-3">
                                             <h6>Ingresa el nombre de la Editorial</h6>
                                             <input class="form-control" type="text" placeholder="Editorial"
-                                                name="Editorial" aria-label="default input example">
+                                                name="Editorial" value="{{old('Editorial')}}" aria-label="default input example">
                                             @if ($errors->has('Editorial'))
                                             <div class="alert alert-warning" role="alert">
                                                 <strong>{{ $errors->first('Editorial') }}</strong>
@@ -157,7 +165,7 @@ of Simple CSS Waves-->
                                         <div class="col mb-3">
                                             <label for="nombre">Ingresa el email de la Editorial</label>
                                             <input class="form-control" type="text" placeholder="Email" name="Email"
-                                                aria-label="default input example">
+                                            value="{{old('Email')}}" aria-label="default input example">
                                             @if ($errors->has('Email'))
                                             <div class="alert alert-warning" role="alert">
                                                 <strong>{{ $errors->first('Email') }}</strong>

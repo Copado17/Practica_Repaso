@@ -12,9 +12,9 @@ class Controlador extends Controller
     
     public function validador_campos(validador $req){
 
-        
+        $titulos=$req->input('Titulo');
      
-        return redirect('/Formulario')->with('mensaje', '¡Libro registrado con éxito!');
+        return redirect('/Formulario')->with('mensaje',compact('titulos'));
 
      }
 
