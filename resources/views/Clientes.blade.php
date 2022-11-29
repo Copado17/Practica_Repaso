@@ -8,12 +8,12 @@
 
     <link rel="stylesheet" href="css/styles.css">
 
-    <title>Formulario</title>
-    
+    <title>Agregar clientes</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </head>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
 
 <body>
     <!--Barra de navegacion-->
@@ -40,23 +40,12 @@
     </nav>
 
 
-   
 
-@if (session('mensaje'))
-    <script>
-        Swal.fire({
-            title: 'Registro exitoso',
-            text: 'El libro {{session('mensaje')['titulos']}} se ha registrado correctamente',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-        })
-    </script>
-
-
-@endif
-
-
-
+    @if (session()->has('mensaje'))
+    <div class="alert alert-primary" role="alert">
+        {!! " Se agrego correctamente el cliente" !!}
+    </div>
+    @endif
 
 
 
@@ -82,19 +71,20 @@ of Simple CSS Waves-->
         <!--Content before waves-->
         <div class="inner-header flex">
 
-            
 
-            
-           
 
-           
+
+
+
+
             <div class="container col-md-5">
+
                 <div class="card-body">
                     <div class="card-header ">
                         <div class="col mb-3">
-                            <h1 class="display-5">Registro de libros</h1>
+                            <h1 class="display-5">Agregar clientes</h1>
                         </div>
-                        <form action="Formulario_libro" method="POST">
+                        <form action="Formulario_cliente" method="POST">
                             @csrf
                             <div class="form-group">
                                 <div class="col mt-2">
@@ -102,81 +92,48 @@ of Simple CSS Waves-->
                                     <div class="text-start">
 
                                         <div class="col mb-3">
-                                            <h6>Ingresa el ISBN</h6>
-                                            <input type="number" class="form-control" name="ISBN" placeholder="ISBN">
-                                            @if ($errors->has('ISBN'))
+                                            <h6>Ingresa el nombre completo</h6>
+                                            <input type="text" class="form-control" name="Nombre" placeholder="Nombre"
+                                                value="{{old('Nombre')}}">
+                                            @if ($errors->has('Nombre'))
                                             <div class="alert alert-warning" role="alert">
-                                                <strong>{{ $errors->first('ISBN') }}</strong>
+                                                <strong>{{ $errors->first('Nombre') }}</strong>
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
                                             @endif
                                         </div>
                                         <div class="col mb-3">
-                                            <h6>Ingresa del titulo del libro</h6>
-                                            <input class="form-control" type="text" placeholder="Titulo del libro"
-                                                name="Titulo" value="{{old('Titulo')}}" aria-label="default input example">
-                                            @if ($errors->has('Titulo'))
+                                            <h6>Ingresa el correo del cliente</h6>
+                                            <input class="form-control" type="email" placeholder="Correo" name="Correo"
+                                                value="{{old('Correo')}}" aria-label="default input example">
+                                            @if ($errors->has('Correo'))
                                             <div class="alert alert-warning" role="alert">
-                                                <strong>{{ $errors->first('Titulo') }}</strong>
+                                                <strong>{{ $errors->first('Correo') }}</strong>
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
                                             @endif
                                         </div>
+
+
+
+
 
                                         <div class="col mb-3">
-                                            <h6>Ingresa el autor</h6>
-                                            <input class="form-control" type="text" placeholder="Nombre del autor"
-                                                name="Autor" value="{{old('Autor')}}" aria-label="default input example">
-                                            @if ($errors->has('Autor'))
+                                            <h6>Ingresa el numero de serie de la INE</h6>
+                                            <input class="form-control" type="number" placeholder="No.serie"
+                                                name="Numero_Serie" value="{{old('Numero_Serie')}}"
+                                                aria-label="default input example">
+                                            @if ($errors->has('Numero_Serie'))
                                             <div class="alert alert-warning" role="alert">
-                                                <strong>{{ $errors->first('Autor') }}</strong>
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            @endif
-
-                                        </div>
-
-                                        <div class="col mb-3">
-                                            <h6>Ingresa el numero de paginas</h6>
-                                            <input class="form-control" type="number" placeholder="Numero de Paginas"
-                                                name="Paginas"value="{{old('Paginas')}}" aria-label="default input example">
-                                            @if ($errors->has('Paginas'))
-                                            <div class="alert alert-warning" role="alert">
-                                                <strong>{{ $errors->first('Paginas') }}</strong>
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            @endif
-
-                                        </div>
-
-                                        <div class="col mb-3">
-                                            <h6>Ingresa el nombre de la Editorial</h6>
-                                            <input class="form-control" type="text" placeholder="Editorial"
-                                                name="Editorial" value="{{old('Editorial')}}" aria-label="default input example">
-                                            @if ($errors->has('Editorial'))
-                                            <div class="alert alert-warning" role="alert">
-                                                <strong>{{ $errors->first('Editorial') }}</strong>
+                                                <strong>{{ $errors->first('Numero_Serie') }}</strong>
                                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
                                                     aria-label="Close"></button>
                                             </div>
                                             @endif
                                         </div>
-                                        <div class="col mb-3">
-                                            <label for="nombre">Ingresa el email de la Editorial</label>
-                                            <input class="form-control" type="text" placeholder="Email" name="Email"
-                                            value="{{old('Email')}}" aria-label="default input example">
-                                            @if ($errors->has('Email'))
-                                            <div class="alert alert-warning" role="alert">
-                                                <strong>{{ $errors->first('Email') }}</strong>
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            @endif
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>

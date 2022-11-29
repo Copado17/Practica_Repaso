@@ -22,4 +22,11 @@ Route::get('/Formulario', function () {
     return view('Formulario');
 });
 
+Route::get('/Clientes', function () {
+    return view('Clientes');
+});
+
 route::post('Formulario_libro', [Controlador::class, 'validador_campos']);
+
+
+route::post('Formulario_cliente', [Controlador::class, 'validador_clientes']);

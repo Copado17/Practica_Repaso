@@ -5,6 +5,8 @@ use App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\validador;
+use App\Http\Requests\validador_clientes;
+
 
 
 class Controlador extends Controller
@@ -16,6 +18,11 @@ class Controlador extends Controller
      
         return redirect('/Formulario')->with('mensaje',compact('titulos'));
 
+     }
+     
+     Public function validador_clientes(validador_clientes $req){
+        
+        return redirect('/Clientes')->with('mensaje', 'Cliente guarado con exito');
      }
 
     
