@@ -32,6 +32,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="Clientes">Registro clientes</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="TLibros">Tabla de libros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TClientes">Tabla de clientes</a>
+                    </li>
                 </ul>
             </div>
         </div>

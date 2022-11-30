@@ -17,8 +17,6 @@
 
 <body>
     <!--Barra de navegacion-->
-
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">Biblioteca</a>
@@ -33,6 +31,12 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Clientes">Registro clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="TLibros">Tabla de libros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TClientes">Tabla de clientes</a>
                     </li>
                 </ul>
             </div>
@@ -94,7 +98,7 @@ of Simple CSS Waves-->
                         <div class="col mb-3">
                             <h1 class="display-5">Registro de libros</h1>
                         </div>
-                        <form action="Formulario_libro" method="POST">
+                        <form action="store" method="post">
                             @csrf
                             <div class="form-group">
                                 <div class="col mt-2">
