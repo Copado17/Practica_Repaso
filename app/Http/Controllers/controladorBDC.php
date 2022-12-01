@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\controladorBD;
+use App\Http\Controllers\controladorBDC;
 
 use App\Http\Requests\validador_clientes;
 use DB;
@@ -59,7 +59,8 @@ class controladorBDC extends Controller
     public function show($id)
     {
         $consultarId= DB::table('tb_cliente')->where('id', $id)->first();
-        return view('ModaleliminarC', compact('consultarId'));
+        return view('ModalEliminarClientes', compact('consultarId'));
+        
     }
 
     /**

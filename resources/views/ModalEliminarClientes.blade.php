@@ -1,3 +1,4 @@
+<!-- Modal -->
 @if (session()->has('Eliminacion'))
 
 {!! "<script>
@@ -12,8 +13,8 @@
 @endif
 @foreach ($resultRec as $item)
 
-<div class="modal fade" id="ModaleliminarC {{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
-    tabindex="-1" aria-labelledby="ModaleliminarC {{$item->id}}" aria-hidden="true">
+<div class="modal fade" id="ModalEliminarClientes{{$item->id}}" data-bs-backdrop="static" data-bs-keyboard="false"
+    tabindex="-1" aria-labelledby="ModalEliminarClientes{{$item->id}}" aria-hidden="true">
 
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -24,7 +25,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h4 class="text-dark">¿Desea eliminar este libro?</h4>
+                <h4 class="text-dark">¿Desea eliminar este clientes?</h4>
 
                 <div class="text-dark">
                     <p class="fw-bold">nombre: {{$item->nombre}}</p>
@@ -51,3 +52,5 @@
 
 </div>
 @endforeach
+
+

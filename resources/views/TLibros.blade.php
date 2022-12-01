@@ -69,15 +69,12 @@
 
         <!--Content before waves-->
         <div class="inner-header flex">
-@include ('Modaleliminar')
-
+            @include ('Modaleliminar')
             <div class="container">
                 <div class="my-5">
                     <h1 class="display-5">Tabla de libros</h1>
                 </div>
-
-
-
+                {{-- TABLA --}}
                 <table class="table table-striped my-4">
                     <thead>
                         <tr>
@@ -92,24 +89,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($resultRec as $item)
                         <tr>
-                            @foreach ($resultRec as $item)
-                            <th scope="row">{{$item->id}}</th>
-                            <td>{{$item->ISBN}}</td>
-                            <td>{{$item->Titulo}}</td>
-                            <td>{{$item->Autor}}</td>
-                            <td>{{$item->No_paginas}}</td>
-                            <td>{{$item->Editorial}}</td>
-                            <td>{{$item->Email_editorial}}</td>
-                            <td>
-                            <a href="{{route('Editar.edit', $item->id)}}" class="btn btn-warning">Editar</a>
-                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalEliminar{{$item->id}}">
-            <i class="bi bi-x-circle-fill"></i> Eliminar</button>
-</button> 
-                            </td>
-
-                        </tr>
-@endforeach
+                                <th scope="row">{{$item->id}}</th>
+                                <td>{{$item->ISBN}}</td>
+                                <td>{{$item->Titulo}}</td>
+                                <td>{{$item->Autor}}</td>
+                                <td>{{$item->No_paginas}}</td>
+                                <td>{{$item->Editorial}}</td>
+                                <td>{{$item->Email_editorial}}</td>
+                                <td>
+                                    <a href="{{route('Editar.edit', $item->id)}}" class="btn btn-warning">Editar</a>
+                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalEliminar{{$item->id}}">
+                                        <i class="bi bi-x-circle-fill"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

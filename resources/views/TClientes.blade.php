@@ -67,24 +67,16 @@
 </script>" !!}
 
 @endif
-
-    <!--Hey! This is the original version
-of Simple CSS Waves-->
-
-    <div class="header">
-
-        <!--Content before waves-->
-        <div class="inner-header flex">
-
-        @include('ModaleliminarC')
-
+<div class="header">
+    <!--Content before waves-->
+    <div class="inner-header flex">
+        @include ('ModalEliminarClientes')
             <div class="container">
                 <div class="my-5">
                     <h1 class="display-5">Tabla de clientes</h1>
                 </div>
-
-
-
+                {{-- TABLA --}}
+                
                 <table class="table my-4">
                     <thead>
                         <tr>
@@ -93,38 +85,26 @@ of Simple CSS Waves-->
                             <th scope="col">Correo</th>
                             <th scope="col">No.serie INE</th>
                             <th scope="col">Opciones</th>
-
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-
-                            @foreach ($resultRec as $item)
-                            <th scope="row">{{$item->id}}</th>
-                            <td>{{$item->nombre}}</td>
-                            <td>{{$item->correo}}</td>
-                            <td>{{$item->no_serie_ine}}</td>
-                            <td>
-                               
-
-                                <a href="{{route('Clientes.edit', $item->id)}}" class="btn btn-warning">Editar</a>
-                                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModaleliminarC {{$item->id}}">
-            <i class="bi bi-x-circle-fill"></i> Eliminar</button>
-
-                            </td>
-
-
-                        </tr>
-@endforeach
+                        @foreach ($resultRec as $item)
+                            <tr>
+                                <th scope="row">{{$item->id}}</th>
+                                <td>{{$item->nombre}}</td>
+                                <td>{{$item->correo}}</td>
+                                <td>{{$item->no_serie_ine}}</td>
+                                <td>
+                                    <a href="{{route('Clientes.edit', $item->id)}}" class="btn btn-warning">Editar</a>
+                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalEliminarClientes{{$item->id}}">
+                                        <i class="bi bi-x-circle-fill"></i> Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
-
-
-
-
-
-
         </div>
         <!--Waves Container-->
         <div>
@@ -143,7 +123,6 @@ of Simple CSS Waves-->
             </svg>
         </div>
         <!--Waves end-->
-
     </div>
     <!--Header ends-->
 
@@ -152,7 +131,9 @@ of Simple CSS Waves-->
         <p>GANDHI COPYRIGHT DERECHOS DE AUTOR 27 DE OCTUBRE DEL 2022 </p>
     </div>
     <!--Content ends-->
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+</script>
 </body>
 
 </html>
