@@ -47,15 +47,7 @@
             <div class="container col-md-5">
                 <h1 class="display-4 text-center mt-5 mb-5 ">Editar <h1>
 
-                        @if($errors->any())
-                        @foreach($errors->all() as $error)
-
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <strong>{{$error}}</strong>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        @endforeach
-                        @endif
+                      
 
                         <div class="card text-center mb-5">
                             <div class="card-header">
