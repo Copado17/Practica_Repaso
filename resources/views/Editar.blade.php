@@ -59,7 +59,7 @@
 
                         <div class="card text-center mb-5">
                             <div class="card-header">
-                                Editar recuerdos
+                                Editar libro
                             </div>
                             <div class="card-body">
 
@@ -165,7 +165,7 @@
 
                             </div>
                             <div class="card-footer text-muted">
-                                <button type="submit" class="btn btn-primary">Actualizar recuerdo</button>
+                                <button type="submit" class="btn btn-primary">Actualizar informacion</button>
                                 </form>
                             </div>
                         </div>

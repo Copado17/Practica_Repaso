@@ -185,7 +185,7 @@ of Simple CSS Waves-->
                                 </div>
                             </div>
                             <div class="col mt-2">
-                                <button type="submit" class="btn btn-primary">Registrar</button>
+                                <button type="submit" class="btn btn-primary">Registrar libros</button>
                             </div>
                         </form>
                     </div>
