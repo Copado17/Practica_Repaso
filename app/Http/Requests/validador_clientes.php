@@ -24,9 +24,9 @@ class validador_clientes extends FormRequest
     public function rules()
     {
         return [
-            'Nombre' => 'required  | min:4  | string',
-            'Correo' => 'required | email ',
-            'Numero_Serie' => 'numeric | required | min-digits:10 ',
+            'nombre' => 'required  | min:4  | string',
+            'correo' => 'required | email ',
+            'no_serie_ine' => 'numeric | required | min-digits:10 ',
            
         ];
     }

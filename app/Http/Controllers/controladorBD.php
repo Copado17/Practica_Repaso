@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\controladorBD;
 use App\Http\Requests\validador;
-use App\Http\Requests\validador_clientes;
+
 use DB;
 use Carbon\Carbon;
 
@@ -19,7 +19,8 @@ class controladorBD extends Controller
      */
     public function index()
     {
-        //
+        $resultRec= DB::table('tb_libro')->get();
+        return view('TLibros', compact('resultRec'));
     }
 
     /**
@@ -50,7 +51,7 @@ class controladorBD extends Controller
              "created_at" => Carbon::now(),
              "updated_at" => Carbon::now()
          ]);
-         return redirect('Formulario/create')->with('confirmacion','Tu recuerdo llego al controlador') ;
+         return redirect('Formulario')->with('Confirmacion','Tu recuerdo llego al controlador') ;
     }
 
     /**
@@ -61,7 +62,8 @@ class controladorBD extends Controller
      */
     public function show($id)
     {
-        //
+        $consultarId= DB::table('tb_libro')->where('id', $id)->first();
+        return view('ModalEliminar', compact('consultarId'));
     }
 
     /**
@@ -72,7 +74,8 @@ class controladorBD extends Controller
      */
     public function edit($id)
     {
-        //
+        $consultarId= DB::table('tb_libro')->where('id', $id)->first();
+        return view('Editar', compact('consultarId'));
     }
 
     /**
@@ -82,9 +85,18 @@ class controladorBD extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(validador $request, $id)
     {
-        //
+        DB::table('tb_libro')->where('id', $id)->update([
+            "ISBN" => $request->input ('ISBN'),
+            "Titulo" => $request->input ('Titulo'),
+            "Autor" => $request->input ('Autor'),
+            "No_paginas" => $request->input ('Paginas'),
+            "Editorial" => $request->input ('Editorial'),
+            "Email_editorial" => $request->input ('Email'),
+             "updated_at" => Carbon::now()
+        ]);
+        return redirect('TLibros')->with('Editar','Tu recuerdo se ha actualizado') ;
     }
 
     /**
@@ -95,6 +107,9 @@ class controladorBD extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_libro')->where('id', $id)->delete();
+        return redirect('TLibros')->with('Eliminacion','Tu recuerdo se ha eliminado') ;
     }
+
+   
 }

@@ -5,108 +5,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Editar libro</title>
     <link rel="stylesheet" href="css/styles.css">
-
-    <title>Agregar clientes</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
-    <!--Barra de navegacion-->
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">Biblioteca</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Formulario">Registro de libro</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Clientes">Registro clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="TLibros">Tabla de libros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/TClientes">Tabla de clientes</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-
-   
-    @if (session()->has('Confirmacion'))
-
-{!! "<script>
-    Swal.fire(
-        'Se agrego compa',
-        ':)',
-        'success'
-    )
-
-</script>" !!}
-
-@endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--Hey! This is the original version
-of Simple CSS Waves-->
 
     <div class="header">
 
         <!--Content before waves-->
         <div class="inner-header flex">
 
-
-
-
-
-
-
+        <a href="/TClientes" class="btn btn-primary m-5">Regresar</a>
             <div class="container col-md-5">
+                <h1 class="display-4 text-center mt-5 mb-5 ">Editar <h1>
 
-                <div class="card-body">
-                    <div class="card-header ">
-                        <div class="col mb-3">
-                            <h1 class="display-5">Agregar clientes</h1>
-                        </div>
-                        <form action="{{route ('Clientes.store')}}" method="POST">
-                            @csrf
-                            <div class="form-group">
-                                <div class="col mt-2">
+               
 
-                                    <div class="text-start">
+                        <div class="card text-center mb-5">
+                            <div class="card-header">
+                                Editar recuerdos
+                            </div>
+                            <div class="card-body">
 
-                                        <div class="col mb-3">
+                                <form method="post" action="{{route('Clientes.update', $consultarId->id)}}">
+                                    @csrf
+                                    @method('put')
+
+                                    <div class="form-group">
+                                        <div class="col mt-2">
+
+                                            <div class="text-start">
+
+                                            <div class="col mb-3">
                                             <h6>Ingresa el nombre completo</h6>
                                             <input type="text" class="form-control" name="nombre" placeholder="nombre"
-                                                value="{{old('nombre')}}">
+                                            value="{{$consultarId->nombre}}">
+                                            
                                             @if ($errors->has('nombre'))
                                             <div class="alert alert-warning" role="alert">
                                                 <strong>{{ $errors->first('nombre') }}</strong>
@@ -118,7 +58,7 @@ of Simple CSS Waves-->
                                         <div class="col mb-3">
                                             <h6>Ingresa el correo del cliente</h6>
                                             <input class="form-control" type="email" placeholder="Correo" name="correo"
-                                                value="{{old('correo')}}" aria-label="default input example">
+                                            value="{{$consultarId->correo}}" aria-label="default input example">
                                             @if ($errors->has('correo'))
                                             <div class="alert alert-warning" role="alert">
                                                 <strong>{{ $errors->first('correo') }}</strong>
@@ -135,7 +75,7 @@ of Simple CSS Waves-->
                                         <div class="col mb-3">
                                             <h6>Ingresa el numero de serie de la INE</h6>
                                             <input class="form-control" type="number" placeholder="No.serie"
-                                                name="no_serie_ine" value="{{old('no_serie_ine')}}"
+                                                name="no_serie_ine" value="{{$consultarId->no_serie_ine}}"
                                                 aria-label="default input example">
                                             @if ($errors->has('no_serie_ine'))
                                             <div class="alert alert-warning" role="alert">
@@ -146,17 +86,33 @@ of Simple CSS Waves-->
                                             @endif
                                         </div>
 
+                                               
+                                                
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+
+
+
+
+
+
                             </div>
-                            <div class="col mt-2">
-                                <button type="submit" class="btn btn-primary">Registrar cliente</button>
+                            <div class="card-footer text-muted">
+                                <button type="submit" class="btn btn-primary">Actualizar recuerdo</button>
+                                </form>
                             </div>
-                        </form>
-                    </div>
-                </div>
+                        </div>
+
+
+
             </div>
+
+
+
+
         </div>
+
         <!--Waves Container-->
         <div>
             <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -182,10 +138,7 @@ of Simple CSS Waves-->
     <div class="content flex">
         <p>GANDHI COPYRIGHT DERECHOS DE AUTOR 27 DE OCTUBRE DEL 2022 </p>
     </div>
-    <!--Content ends-->
 
-
-    @yield('contenido')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>

@@ -40,12 +40,36 @@
         </div>
     </nav>
 
+    @if (session()->has('Eliminacion'))
 
+{!! "<script>
+    Swal.fire(
+        'Se elimino compa',
+        ':)',
+        'success'
+    )
+
+</script>" !!}
+
+@endif
+
+@if (session()->has('Editar'))
+
+{!! "<script>
+    Swal.fire(
+        'Se edito compa',
+        ':)',
+        'success'
+    )
+
+</script>" !!}
+
+@endif
     <div class="header">
 
         <!--Content before waves-->
         <div class="inner-header flex">
-
+@include ('Modaleliminar')
 
             <div class="container">
                 <div class="my-5">
@@ -54,7 +78,7 @@
 
 
 
-                <table class="table my-4">
+                <table class="table table-striped my-4">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -64,17 +88,28 @@
                             <th scope="col">Numero de paginas</th>
                             <th scope="col">Editorial</th>
                             <th scope="col">Email de Editorial</th>
+                            <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            @foreach ($resultRec as $item)
+                            <th scope="row">{{$item->id}}</th>
+                            <td>{{$item->ISBN}}</td>
+                            <td>{{$item->Titulo}}</td>
+                            <td>{{$item->Autor}}</td>
+                            <td>{{$item->No_paginas}}</td>
+                            <td>{{$item->Editorial}}</td>
+                            <td>{{$item->Email_editorial}}</td>
+                            <td>
+                            <a href="{{route('Editar.edit', $item->id)}}" class="btn btn-warning">Editar</a>
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalEliminar{{$item->id}}">
+            <i class="bi bi-x-circle-fill"></i> Eliminar</button>
+</button> 
+                            </td>
 
                         </tr>
-
+@endforeach
                     </tbody>
                 </table>
             </div>

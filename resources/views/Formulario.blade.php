@@ -46,16 +46,16 @@
 
    
 
-@if (session('mensaje'))
-    <script>
-        Swal.fire({
-            title: 'Registro exitoso',
-            text: 'El libro {{session('mensaje')['titulos']}} se ha registrado correctamente',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-        })
-    </script>
+    @if (session()->has('Confirmacion'))
 
+{!! "<script>
+    Swal.fire(
+        'Se agrego compa',
+        ':)',
+        'success'
+    )
+
+</script>" !!}
 
 @endif
 
@@ -98,7 +98,7 @@ of Simple CSS Waves-->
                         <div class="col mb-3">
                             <h1 class="display-5">Registro de libros</h1>
                         </div>
-                        <form action="store" method="post">
+                        <form action="Formulario/store" method="post">
                             @csrf
                             <div class="form-group">
                                 <div class="col mt-2">
